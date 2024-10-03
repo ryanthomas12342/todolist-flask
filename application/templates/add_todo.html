@@ -1,0 +1,42 @@
+{% extends "layout.html"%} {% block content%}
+
+<div>
+  <form action="" method="POST">
+    {{form.csrf_token()}}
+    <feildset class="form-group">
+      <legend>Add todo</legend>
+    </feildset>
+
+    <div class="form-group">
+      {{form.name.label(class="form-control-label")}} {% if form.name.errors%}
+      {{form.name(class="form.control is.invalid")}} {%for error in
+      form.name.errors%}
+      <div class="invalid-feedback">
+        <span>{{error}}</span>
+      </div>
+      {%endfor%} {%else %} {{form.name(class="form-control")}} {%endif%}
+    </div>
+    <div class="form-group">
+      {{form.desc.label(class="form-control-label")}} {% if form.desc.errors%}
+      {{form.desc(class="form.control is.invalid")}} {%for error in
+      form.desc.errors%}
+      <div class="invalid-feedback">
+        <span>{{error}}</span>
+      </div>
+      {%endfor%} {%else %} {{form.desc(class="form-control")}} {%endif%}
+    </div>
+    <div class="form-group">
+      {{form.completed.label(class="form-control-label")}} {% if
+      form.completed.errors%} {{form.completed(class="form.control
+      is.invalid")}} {%for error in form.completed.errors%}
+      <div class="invalid-feedback">
+        <span>{{error}}</span>
+      </div>
+      {%endfor%} {%else %} {{form.completed(class="form-control")}} {%endif%}
+    </div>
+    <div class="form-group">
+      {{form.submit(class="btn btn-outline-info mt-2")}}
+    </div>
+  </form>
+</div>
+{% endblock %}
